@@ -1,0 +1,168 @@
+1 realization
+All Requests from 1 Source in 1 realization: 77
+Done Requests from 1 Source in 1realization: 55
+Refuse Requests from 1 Source in 1realization: 21
+-------------------------------------
+All Requests from 2 Source in 1 realization: 84
+Done Requests from 2 Source in 1realization: 63
+Refuse Requests from 2 Source in 1realization: 20
+-------------------------------------
+All Requests from 3 Source in 1 realization: 79
+Done Requests from 3 Source in 1realization: 57
+Refuse Requests from 3 Source in 1realization: 20
+-------------------------------------
+2 realization
+All Requests from 1 Source in 2 realization: 81
+Done Requests from 1 Source in 2realization: 74
+Refuse Requests from 1 Source in 2realization: 6
+-------------------------------------
+All Requests from 2 Source in 2 realization: 77
+Done Requests from 2 Source in 2realization: 71
+Refuse Requests from 2 Source in 2realization: 5
+-------------------------------------
+All Requests from 3 Source in 2 realization: 78
+Done Requests from 3 Source in 2realization: 72
+Refuse Requests from 3 Source in 2realization: 5
+-------------------------------------
+3 realization
+All Requests from 1 Source in 3 realization: 87
+Done Requests from 1 Source in 3realization: 83
+Refuse Requests from 1 Source in 3realization: 3
+-------------------------------------
+All Requests from 2 Source in 3 realization: 77
+Done Requests from 2 Source in 3realization: 75
+Refuse Requests from 2 Source in 3realization: 1
+-------------------------------------
+All Requests from 3 Source in 3 realization: 80
+Done Requests from 3 Source in 3realization: 77
+Refuse Requests from 3 Source in 3realization: 2
+-------------------------------------
+4 realization
+All Requests from 1 Source in 4 realization: 81
+Done Requests from 1 Source in 4realization: 80
+Refuse Requests from 1 Source in 4realization: 0
+-------------------------------------
+All Requests from 2 Source in 4 realization: 81
+Done Requests from 2 Source in 4realization: 80
+Refuse Requests from 2 Source in 4realization: 0
+-------------------------------------
+All Requests from 3 Source in 4 realization: 77
+Done Requests from 3 Source in 4realization: 76
+Refuse Requests from 3 Source in 4realization: 0
+-------------------------------------
+5 realization
+All Requests from 1 Source in 5 realization: 77
+Done Requests from 1 Source in 5realization: 76
+Refuse Requests from 1 Source in 5realization: 0
+-------------------------------------
+All Requests from 2 Source in 5 realization: 87
+Done Requests from 2 Source in 5realization: 86
+Refuse Requests from 2 Source in 5realization: 0
+-------------------------------------
+All Requests from 3 Source in 5 realization: 83
+Done Requests from 3 Source in 5realization: 80
+Refuse Requests from 3 Source in 5realization: 2
+-------------------------------------
+6 realization
+All Requests from 1 Source in 6 realization: 83
+Done Requests from 1 Source in 6realization: 82
+Refuse Requests from 1 Source in 6realization: 0
+-------------------------------------
+All Requests from 2 Source in 6 realization: 82
+Done Requests from 2 Source in 6realization: 81
+Refuse Requests from 2 Source in 6realization: 0
+-------------------------------------
+All Requests from 3 Source in 6 realization: 77
+Done Requests from 3 Source in 6realization: 76
+Refuse Requests from 3 Source in 6realization: 0
+-------------------------------------
+7 realization
+All Requests from 1 Source in 7 realization: 77
+Done Requests from 1 Source in 7realization: 76
+Refuse Requests from 1 Source in 7realization: 0
+-------------------------------------
+All Requests from 2 Source in 7 realization: 77
+Done Requests from 2 Source in 7realization: 75
+Refuse Requests from 2 Source in 7realization: 1
+-------------------------------------
+All Requests from 3 Source in 7 realization: 77
+Done Requests from 3 Source in 7realization: 76
+Refuse Requests from 3 Source in 7realization: 0
+-------------------------------------
+8 realization
+All Requests from 1 Source in 8 realization: 77
+Done Requests from 1 Source in 8realization: 76
+Refuse Requests from 1 Source in 8realization: 0
+-------------------------------------
+All Requests from 2 Source in 8 realization: 77
+Done Requests from 2 Source in 8realization: 76
+Refuse Requests from 2 Source in 8realization: 0
+-------------------------------------
+All Requests from 3 Source in 8 realization: 82
+Done Requests from 3 Source in 8realization: 81
+Refuse Requests from 3 Source in 8realization: 0
+-------------------------------------
+9 realization
+All Requests from 1 Source in 9 realization: 85
+Done Requests from 1 Source in 9realization: 84
+Refuse Requests from 1 Source in 9realization: 0
+-------------------------------------
+All Requests from 2 Source in 9 realization: 88
+Done Requests from 2 Source in 9realization: 86
+Refuse Requests from 2 Source in 9realization: 1
+-------------------------------------
+All Requests from 3 Source in 9 realization: 77
+Done Requests from 3 Source in 9realization: 76
+Refuse Requests from 3 Source in 9realization: 0
+-------------------------------------
+10 realization
+All Requests from 1 Source in 10 realization: 85
+Done Requests from 1 Source in 10realization: 84
+Refuse Requests from 1 Source in 10realization: 0
+-------------------------------------
+All Requests from 2 Source in 10 realization: 88
+Done Requests from 2 Source in 10realization: 87
+Refuse Requests from 2 Source in 10realization: 0
+-------------------------------------
+All Requests from 3 Source in 10 realization: 77
+Done Requests from 3 Source in 10realization: 76
+Refuse Requests from 3 Source in 10realization: 0
+-------------------------------------
+11 realization
+All Requests from 1 Source in 11 realization: 92
+Done Requests from 1 Source in 11realization: 91
+Refuse Requests from 1 Source in 11realization: 0
+-------------------------------------
+All Requests from 2 Source in 11 realization: 77
+Done Requests from 2 Source in 11realization: 76
+Refuse Requests from 2 Source in 11realization: 0
+-------------------------------------
+All Requests from 3 Source in 11 realization: 77
+Done Requests from 3 Source in 11realization: 76
+Refuse Requests from 3 Source in 11realization: 0
+-------------------------------------
+   1 source      2 source      3 source   
+P
+    0.2727         0.2381       0.2532
+    0.0741         0.0649       0.0641
+    0.0345         0.0130       0.0250
+    0.0000         0.0000       0.0000
+    0.0000         0.0000       0.0241
+    0.0000         0.0000       0.0000
+    0.0000         0.0130       0.0000
+    0.0000         0.0000       0.0000
+    0.0000         0.0114       0.0000
+    0.0000         0.0000       0.0000
+    0.0000         0.0000       0.0000
+M
+    0.0692      0.0722      0.0551
+    0.0251      0.0225      0.0231
+    0.0112      0.0133      0.0234
+    0.0082      0.0083      0.0038
+    0.0050      0.0071      0.0031
+    0.0018      0.0043      0.0018
+    0.0039      0.0040      0.0032
+    0.0018      0.0021      0.0035
+    0.0025      0.0025      0.0029
+    0.0008      0.0014      0.0015
+    0.0012      0.0004      0.0017

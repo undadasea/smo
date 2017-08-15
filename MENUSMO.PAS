@@ -24,7 +24,6 @@ type
      helptype = ^menuSecondFloorResult;
 
      menuFirstFloor = object
-     {listButton: list; }
      {arrayButton: arraytypeButton; }
      resultSecondFloor: helptype;
      procedure draw;
@@ -196,7 +195,7 @@ var source_:source;
     procedure realization;
      var i: integer;
      begin
-      assign(f, 'd:/foutsmo.txt');
+      assign(f, 'd:/smo/foutsmo.txt');
       rewrite(f);
       {device_.lyambda:=0.4;    {make it changable}
       {device_.arrayLyambdas[1]:=1;
