@@ -7,7 +7,7 @@ type
 
   graphik = object
     procedure drawOXOY(L: real; Ch: char);
-    procedure drawGraph(M1: array20; M2: array20; M3: array20);
+    procedure drawGraph(M1: array11; M2: array11; M3: array11);
     end;
 
 var driver_1, mode_1:integer;  {NOT TO USE SAME NAMES IN MODULES}
@@ -18,6 +18,8 @@ procedure graphik.drawOXOY(L: real; Ch: char);
 var driver, mode: integer;
     s: string;
  begin
+   setcolor(white);
+   settextstyle(6,0,1);
    str(L:2:1, s);
    line(50, GetMaxY-100, GetMaxX-55, GetMaxY-100);  {ox}  {535 pix}
    line(getmaxx-55, getmaxy-100, GetmaxX-64, GetmaxY-103);
@@ -40,10 +42,24 @@ var driver, mode: integer;
      end;
    outtextxy(5, 70, '100%');
    outtextxy(10, getmaxy-140, '10%');     {working area oy = 300, dx = 30}
-   delay(3000);                {DELETE}
+
+   setfillstyle(1,1);
+   bar(250,getmaxy-80, 260, getmaxy-70);
+   setcolor(white);
+   outtextxy(274, getmaxy-84, '1 Source');
+
+   setfillstyle(1,4);
+   bar(250,getmaxy-55, 260, getmaxy-45);
+   setcolor(white);
+   outtextxy(274, getmaxy-59, '2 Source');
+
+   setfillstyle(1,14);
+   bar(250,getmaxy-30, 260, getmaxy-20);
+   setcolor(white);
+   outtextxy(274, getmaxy-34, '2 Source');
  end;
 
-procedure graphik.drawGraph(M1: array20; M2: array20; M3:array20);    {1,4,14}
+procedure graphik.drawGraph(M1: array11; M2: array11; M3:array11);    {1,4,14}
 var point, color, i: integer;
     arrayOX: array [1..11] of integer;
     arrayOY: array[1..11] of integer;
@@ -93,7 +109,6 @@ var point, color, i: integer;
      begin
        line(arrayOX[i], arrayOY[i], arrayOX[i+1], arrayOY[i+1]);
      end;
-   delay(4000);
  end;
 
 begin

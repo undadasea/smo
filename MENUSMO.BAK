@@ -684,8 +684,7 @@ procedure menuFirstFloor.draw;
         begin
           if (arrayButtonResult[i].name = 'Graphic') and (arrayButtonResult[i].focused) then
             begin
-              {outtextXY(100,100,'Graphic was pushed');}
-              showGraphic;
+              outtextXY(100,100,'Graphic was pushed');
               arrayButtonResult[i].focused:=false;
             end;
           if (arrayButtonResult[i].name = 'Table') and (arrayButtonResult[i].focused) then
@@ -782,13 +781,8 @@ procedure menuFirstFloor.draw;
 
   procedure menuSecondFloorResult.showGraphic;
     begin
-      graph_.drawOXOY(device_.lyambda, 'P');
+      graph_.drawOXOY(0.2, 'P');
       graph_.drawGraph(source_.arrayPosibility1, source_.arrayPosibility2, source_.arrayPosibility3);
-      readln;
-      cleardevice;
-      graph_.drawOXOY(device_.lyambda, 'M');
-      graph_.drawGraph(source_.arrayMathWait1, source_.arrayMathWait2, source_.arrayMathWait3);
-      readln;
     end;
 
 

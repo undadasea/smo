@@ -13,17 +13,17 @@ type
   arraytypeBufferInt=array[1..bufferSize] of integer;
   arraytypeLyambdas = array[1..11] of real;
   arraytypeSourceLyambdas = array[1..3] of real;
-  array20= array[1..11] of real;
+  array11= array[1..11] of real;
 
   source = object
     arraySourceLyambdas: arraytypeSourceLyambdas;
     arraySourceTime: arraytypeTime;
-    arrayMathWait1: array20;
-    arrayMathWait2: array20;
-    arrayMathWait3: array20;
-    arrayPosibility1: array20;
-    arrayPosibility2: array20;
-    arrayPosibility3: array20;
+    arrayMathWait1: array11;
+    arrayMathWait2: array11;
+    arrayMathWait3: array11;
+    arrayPosibility1: array11;
+    arrayPosibility2: array11;
+    arrayPosibility3: array11;
     doneRequests: longint;
     refuseRequests: longint;
     allrequests: longint;
