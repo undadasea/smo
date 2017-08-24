@@ -9,7 +9,7 @@ type
     procedure drawOXOY(L: real; Ch: char);
     procedure drawGraph(M1: array11; M2: array11; M3: array11);
     procedure modeling;
-    procedure graphonline(all: longint; refuse: longint; length: integer; kmin: integer);
+    procedure graphonline(all: longint; refuse: longint; length: integer);
     end;
 
 var driver_1, mode_1:integer;  {NOT TO USE SAME NAMES IN MODULES}
@@ -131,28 +131,28 @@ var point, color, i: integer;
        end;
    end;
 
-procedure graphik.graphonline(all: longint; refuse: longint; length: integer; kmin: integer);
-  var percentint, dx, dy, x, y:  integer;
+procedure graphik.graphonline(all: longint; refuse: longint; length: integer);
+  var kmin, percentint, dx, dy, x, y:  integer;
       percentreal, num: real;
   begin
+    kmin:= 10;
     if kmin = 10 then
       begin
         num:= length/kmin;
         dx:=round(num);   {number of points}
         {dx:=5;}
         x:=53;
-        y:=GetMaxY-103;
+        y:=GetMaxY-93;
       end;
     
-    {if all = kmin then
-      begin}
+    if all = kmin then
+      begin
         percentreal:=refuse/all;
         percentint:=round(percentreal)*3;
-        setfillstyle(solidfill, white);
-        bar(x, y + percentint, x-2, y + percentint -2);
+        putpixel(x, y + percentint);
         all:=all+10;
         x:=x+dx;
-      {end;}
+      end;
   end;
 
 begin

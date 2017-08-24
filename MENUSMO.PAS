@@ -57,7 +57,7 @@ var source_:source;
     device_:device;
     graphik_:graphik;
     w: integer;
-    f: text;
+    f, f2: text;
     lengthRealization: integer;
     graph_: graphik;
 
@@ -193,11 +193,16 @@ var source_:source;
           RecDoneReq(t);                  
       end;
 
-    procedure realization;
-     var i: integer;
+    procedure realization(key: byte);
+     var i, kmin, k, percentint, dx, dy, x, y: integer;
+         percentreal, num: real;
      begin
       assign(f, 'd:/smo/foutsmo.txt');
+      assign(f2, 'd:/smo/foutsmo2.txt');
       rewrite(f);
+      rewrite(f2);
+      kmin:=10;
+      k:=1;
       {device_.lyambda:=0.4;    {make it changable}
       {device_.arrayLyambdas[1]:=1;
       for i:=2 to 11 do
@@ -303,31 +308,69 @@ var source_:source;
                   source_.allRequests:=source_.allRequests+1;
                   RecAllReq;
                   source_.findMIN;
-                  if (outDataAllRequests1[w]=2000) or (outDataAllRequests2[w]=2000) or (outDataAllRequests3[w]=2000) then
-                    break
+                  {if (outDataAllRequests1[w]=2000) or (outDataAllRequests2[w]=2000) or (outDataAllRequests3[w]=2000) then
+                    break}
                 end;
             end;
 
 
-    if buffer_.buffIndex=0  then
-            begin
-                  device_.getNewRealizationTime(w);
-                  device_.afterProcess:=source_.arraySourceTime[source_.minTimeIndex]+
-                     device_.timeRealization;
-                  source_.doneRequests:=source_.doneRequests+1;
-                  RecDoneReq(source_.minTimeIndex);
-                  source_.getGenerationTime(source_.minTimeIndex);
-                  source_.arraySourceTime[source_.minTimeIndex]:=
-                     source_.arraySourceTime[source_.minTimeIndex]+source_.timeGeneration;
-                  source_.allRequests:=source_.allRequests+1;
-                  RecAllReq;
-            end;
+            if buffer_.buffIndex=0  then
+              begin
+                device_.getNewRealizationTime(w);
+                device_.afterProcess:=source_.arraySourceTime[source_.minTimeIndex]+
+                   device_.timeRealization;
+                source_.doneRequests:=source_.doneRequests+1;
+                RecDoneReq(source_.minTimeIndex);
+                source_.getGenerationTime(source_.minTimeIndex);
+                source_.arraySourceTime[source_.minTimeIndex]:=
+                   source_.arraySourceTime[source_.minTimeIndex]+source_.timeGeneration;
+                source_.allRequests:=source_.allRequests+1;
+                RecAllReq;
+              end;
 
               if buffer_.buffIndex<>0 then
                  begin
                   takeFromBuff;
                   buffer_.buffIndex:=buffer_.buffIndex-1;
                 end;
+              
+              if (key=1) and (w=1) then
+                begin
+                  {kmin:=10;}
+                  if k=1 then
+                    begin
+                      cleardevice;
+                      graph_.drawOXOY(device_.lyambda, 'P');
+                      k:=k+1;
+                    end;
+                  if  outDataAllRequests1[w] >= kmin then
+                    begin
+                      if k = 2 then
+                        begin
+                          num:= 570/(lengthRealization/kmin);
+                          dx:=round(num);   {number of points}
+                          writeln(f2, 'dx ', dx);
+                          {dx:=5;}
+                          x:=53;
+                          y:=GetMaxY-115;
+                          k:=k+1;
+                        end;
+                  
+                  {if all = kmin then
+                    begin}
+                      percentreal:=outDataRefuseRequests1[w]/outDataAllRequests1[w]*100;
+                      percentint:=round(percentreal);
+                      percentint:= percentint*3;
+                      setfillstyle(solidfill, white);
+                      bar(x, y - percentint, x-1, y - percentint -1);
+                      delay(50);
+                      x:=x+dx;
+                      kmin:=kmin+10;
+                    end;
+                end;
+
+              writeln(f2, 'All: ', outDataAllRequests1[w]);
+              writeln(f2, 'Refuse: ', outDataRefuseRequests1[w]);
             end;
 
               outDataAllRequests[w]:=source_.allRequests;
@@ -340,6 +383,10 @@ var source_:source;
 
               {if (outDataAllRequests1[w]=2000) or (outDataAllRequests2[w]=2000) or (outDataAllRequests3[w]=2000) then
                 exit;}
+
+              {if key=2 then
+                begin
+                end;}
 
               w:=w+1;
 
@@ -510,12 +557,33 @@ procedure menuFirstFloor.draw;
               if array_[i].name = 'Start' then
                 begin
                   array_[i].focused:=false;
-                  outtextXY(100,100, 'Realization...');
-                  realization;
-                  cleardevice;   {!!!!!!}
-                  draw;
-                  firstFloor(4, arrayButton);
-                  exit;        {!!!!}
+                  outtextXY(50, 140, '1: graphics');
+                  outtextXY(50, 240, '2: "Modeling..."');
+                  while true do
+                    begin
+                      if keypressed then
+                        begin
+                          case(readkey) of
+                            '1':
+                              begin
+                                realization(1);
+                                cleardevice;   {!!!!!!}
+                                draw;
+                                firstFloor(4, arrayButton);
+                                exit;
+                              end;
+                            '2':
+                              begin
+                                graph_.modeling;
+                                realization(2);
+                                cleardevice;   {!!!!!!}
+                                draw;
+                                firstFloor(4, arrayButton);
+                                exit;
+                              end;
+                          end;
+                        end;
+                    end;
                 end;
               if array_[i].name = 'Result' then
                 begin
@@ -538,8 +606,20 @@ procedure menuFirstFloor.draw;
                         if keypressed then
                           begin
                             case(readkey) of
-                              '1': begin  setSettings; exit; end;
-                              '2': begin  showSettings; exit; end;
+                              '1': begin  
+                                     setSettings; 
+                                     cleardevice;   {!!!!!!}
+                                     draw;
+                                     firstFloor(4, arrayButton);
+                                     exit; 
+                                   end;
+                              '2': begin  
+                                     showSettings; 
+                                     cleardevice;   {!!!!!!}
+                                     draw;
+                                     firstFloor(4, arrayButton);
+                                     exit; 
+                                   end;
                               #75:
                                 begin
                                   cleardevice;   {!!!!!!}
@@ -660,6 +740,8 @@ procedure menuFirstFloor.draw;
 
   procedure menuSecondFloorResult.draw;
     begin
+      setcolor(white);
+
       buttonResultGraphic.x := 50;
       buttonResultGraphic.y := 102;
       buttonResultGraphic.name := 'Graphic';
@@ -686,13 +768,21 @@ procedure menuFirstFloor.draw;
             begin
               {outtextXY(100,100,'Graphic was pushed');}
               showGraphic;
+              cleardevice;   {!!!!!!}
+              ToFirstFloor.draw;
+              ToFirstFloor.firstFloor(4, arrayButton);
               arrayButtonResult[i].focused:=false;
+              exit;
             end;
           if (arrayButtonResult[i].name = 'Table') and (arrayButtonResult[i].focused) then
             begin
               {outtextxy(100,100, 'Table');}
               showTable;
+              cleardevice;   {!!!!!!}
+              ToFirstFloor.draw;
+              ToFirstFloor.firstFloor(4, arrayButton);
               arrayButtonResult[i].focused:=false;
+              exit;
             end;
           if (arrayButtonResult[i].name = 'go back') and (arrayButtonResult[i].focused) then
           begin
@@ -703,7 +793,6 @@ procedure menuFirstFloor.draw;
             exit;       {!!!!}
           end;
         end;
-      delay(2000);
     end;
 
   procedure menuSecondFloorResult.menuResult;
@@ -782,13 +871,44 @@ procedure menuFirstFloor.draw;
 
   procedure menuSecondFloorResult.showGraphic;
     begin
+      cleardevice;
       graph_.drawOXOY(device_.lyambda, 'P');
+      graph_.drawGraph(source_.arrayPosibility1, 
+        source_.arrayPosibility2, source_.arrayPosibility3);
+      while true do
+        begin
+          if keypressed then
+            case(readkey) of
+              #75:
+                begin
+                  cleardevice;
+                  graph_.drawOXOY(device_.lyambda, 'P');
+                  graph_.drawGraph(source_.arrayPosibility1, 
+                    source_.arrayPosibility2, source_.arrayPosibility3);
+                end;
+              #77:
+                begin
+                  cleardevice;
+                  graph_.drawOXOY(device_.lyambda, 'M');
+                  graph_.drawGraph(source_.arrayMathWait1, 
+                    source_.arrayMathWait2, source_.arrayMathWait3);
+                end;
+              #13:
+                begin
+                  cleardevice;
+                  complete;
+                  ToFirstFloor.firstFloor(3, arrayButtonResult);
+                  exit;
+                end;
+            end;
+        end;
+      {graph_.drawOXOY(device_.lyambda, 'P');
       graph_.drawGraph(source_.arrayPosibility1, source_.arrayPosibility2, source_.arrayPosibility3);
       readln;
       cleardevice;
       graph_.drawOXOY(device_.lyambda, 'M');
       graph_.drawGraph(source_.arrayMathWait1, source_.arrayMathWait2, source_.arrayMathWait3);
-      readln;
+      readln;}
     end;
 
 
