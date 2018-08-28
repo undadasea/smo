@@ -95,7 +95,7 @@ var source_:source;
     outDataRefuseRequests3: array[1..11] of longint;
     outDataTimeWaiting3: array[1..11] of real;
 
-    procedure RecAllReq;
+    procedure RecAllReq;                 {outside of the source object}
     begin
       if source_.minTimeIndex=1 then
         outDataAllRequests1[w]:=outDataAllRequests1[w]+1;
@@ -105,7 +105,7 @@ var source_:source;
         outDataAllRequests3[w]:=outDataAllRequests3[w]+1;
     end;
 
-    procedure RecDoneReq(t: byte);
+    procedure RecDoneReq(t: byte);                
     begin
       if t =1 then
         outDataDoneRequests1[w]:=outDataDoneRequests1[w]+1;
@@ -137,7 +137,7 @@ var source_:source;
           outDataTimeWaiting3[w]:=outDataTimeWaiting3[w]+abs(device_.afterProcess-max);
       end;
 
-    procedure takeFromBuff;
+    {procedure takeFromBuff;
     var i, t: byte;
         maxPriority: real;
 
@@ -189,16 +189,16 @@ var source_:source;
           RecWaitReq(t, maxPriority);
           device_.getNewRealizationTime(w);
           device_.afterProcess:=maxPriority+device_.timeRealization;
-          source_.doneRequests:=source_.doneRequests+1;  
+          source_.doneRequests:=source_.doneRequests+1;   -------------why-------ment done of 3 sources
           RecDoneReq(t);                  
-      end;
+      end;}
 
     procedure realization(key: byte);
      var i, kmin, k, percentint, dx, dy, x, y: integer;
          percentreal, num: real;
      begin
-      assign(f, 'd:/smo/foutsmo.txt');
-      assign(f2, 'd:/smo/foutsmo2.txt');
+      assign(f, 'c:/users/valer/smo/foutsmo.txt');
+      assign(f2, 'c:/users/valer/smo/foutsmo2.txt');
       rewrite(f);
       rewrite(f2);
       kmin:=10;
@@ -273,20 +273,11 @@ var source_:source;
             begin
               if buffer_.buffIndex<>bufferSize then
                 begin
-                  if buffer_.buffIndex=0 then
-                    begin
-                      buffer_.buff[1]:=source_.arraySourceTime[source_.minTimeIndex];
-                      buffer_.sourceIndex[1]:=source_.minTimeIndex;
-                      source_.getGenerationTime(source_.minTimeIndex);
-                      source_.arraySourceTime[source_.minTimeIndex]:=
-                         source_.arraySourceTime[source_.minTimeIndex]+source_.timeGeneration;
-                      RecAllReq;
-                      source_.findMIN;
-                      source_.allRequests:=source_.allRequests+1;
-                      buffer_.buffIndex:=buffer_.buffIndex+1;
-                    end
+                  if buffer_.buffIndex=0 then    
+                    buffer_.putInto(buffIndex);
+                    
                   else if buffer_.buffIndex=1 then
-                    begin
+                    {begin
                       buffer_.buff[2]:=source_.arraySourceTime[source_.minTimeIndex];
                       buffer_.sourceIndex[2]:=source_.minTimeIndex;
                       source_.getGenerationTime(source_.minTimeIndex);
@@ -296,7 +287,7 @@ var source_:source;
                       source_.findMIN;
                       source_.allRequests:=source_.allRequests+1;
                       buffer_.buffIndex:=buffer_.buffIndex+1;
-                    end;
+                    end;}
                 end
               else if buffer_.buffIndex=2 then
                 begin
@@ -308,8 +299,6 @@ var source_:source;
                   source_.allRequests:=source_.allRequests+1;
                   RecAllReq;
                   source_.findMIN;
-                  {if (outDataAllRequests1[w]=2000) or (outDataAllRequests2[w]=2000) or (outDataAllRequests3[w]=2000) then
-                    break}
                 end;
             end;
 

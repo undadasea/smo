@@ -209,10 +209,10 @@ procedure buffer_t.putInto(i: byte; s1: source_t; s2: source_t; s3: source_t);
 
     {buff[index+1]:=assist.findMinTime(s1, s2, s3);}
     queue[i+1]:=assistent.findMinTimeSource(s1, s2, s3);
-    time:=(queue[i+1])^.timeLastGen; 
+    time:=@(queue[i+1])^.timeLastGen;    {does it work?}
     {source_t.getGenerationTime(source_.minTimeIndex);}
-    (assistent.findMinTimeSource(s1, s2, s3))^.timeLastGen:=
-        (assistent.findMinTimeSource(s1, s2, s3))^.timeLastGen + time;
+    (assist.findMinTimeSource(s1, s2, s3))^.timeLastGen:=
+        (assist.findMinTimeSource(s1, s2, s3))^.timeLastGen + time;
     {source_.arraySourceTime[source_.minTimeIndex]:=
        source_.arraySourceTime[source_.minTimeIndex]+source_.timeGeneration;}
     {RecAllReq;}
